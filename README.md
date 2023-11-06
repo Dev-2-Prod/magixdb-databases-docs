@@ -172,3 +172,64 @@ Don't forget to close the cursor and the database connection when you're done wi
 cursor.close()
 connection.close()
 ```
+
+### 3. MongoDB
+
+#### Step 1: Install the pymongo library
+You need to install the pymongo library if you haven't already. You can do this using pip:
+
+```cmd
+pip install pymongo
+```
+#### Step 2: Import the necessary libraries
+You'll need to import the pymongo library to work with MongoDB.
+
+```python
+import pymongo
+```
+#### Step 3: Connect to a MongoDB database
+To connect to a MongoDB database, provide the connection details, such as the host and port. If authentication is required, you can also provide the username and password.
+
+```python
+# Replace these values with your MongoDB connection details
+host = "your_host"
+port = 27017  # Default MongoDB port
+
+# Create a connection to the MongoDB server
+client = pymongo.MongoClient(host, port)
+
+# Access a specific database
+database = client["your_database_name"]
+
+# If authentication is required:
+# database.authenticate("your_username", "your_password")
+```
+#### Step 4: Access a collection
+In MongoDB, data is stored in collections. You can access a specific collection within the database.
+
+```python
+# Access a specific collection in the database
+collection = database["your_collection_name"]
+```
+#### Step 5: Perform operations on the collection
+You can perform various operations on the collection, such as inserting documents, querying data, and updating documents. Here's an example of inserting a document into the collection:
+
+```python
+# Insert a document into the collection
+data = {"key": "value"}
+insert_result = collection.insert_one(data)
+print("Inserted document ID:", insert_result.inserted_id)
+
+#Query Documents
+result = collection.find({"field_name": "value"})
+for document in result:
+    print(document)
+    
+```
+
+#### Step 6: Close the MongoDB connection
+Close the MongoDB connection when you're done with it to release resources.
+
+```python
+client.close()
+```
