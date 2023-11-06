@@ -128,3 +128,47 @@ cursor.close()
 connection.close()
 ```
 
+### 1. SQLite
+
+#### Step 1: Import the necessary libraries
+You'll need to import the sqlite3 library to work with SQLite databases.
+
+```python
+import sqlite3
+```
+#### Step 2: Connect to the SQLite database
+To connect to an SQLite database, provide the path to the database file or create a new one if it doesn't exist.
+
+```python
+# Replace 'your_database.db' with the path to your SQLite database file
+connection = sqlite3.connect('your_database.db'
+```
+#### Step 3: Create a cursor object
+Similar to working with MySQL, you need to create a cursor to execute SQL queries and fetch results.
+
+```python
+cursor = connection.cursor()
+```
+
+#### Step 4: Extract schema information
+You can use SQL queries to retrieve schema information from the SQLite database. For example, to get a list of tables in the database:
+
+```python
+# Get the list of tables in the database
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+```
+
+#### Step 5: Close the cursor and connection
+Don't forget to close the cursor and the database connection when you're done with them.
+
+```python
+cursor.close()
+connection.close()
+```
