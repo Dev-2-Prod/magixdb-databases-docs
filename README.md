@@ -128,7 +128,7 @@ cursor.close()
 connection.close()
 ```
 
-### 1. SQLite
+### 2. SQLite
 
 #### Step 1: Import the necessary libraries
 You'll need to import the sqlite3 library to work with SQLite databases.
@@ -141,7 +141,7 @@ To connect to an SQLite database, provide the path to the database file or creat
 
 ```python
 # Replace 'your_database.db' with the path to your SQLite database file
-connection = sqlite3.connect('your_database.db'
+connection = sqlite3.connect('your_database.db')
 ```
 #### Step 3: Create a cursor object
 Similar to working with MySQL, you need to create a cursor to execute SQL queries and fetch results.
