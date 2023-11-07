@@ -65,9 +65,7 @@ python
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
 
-### 1. MySQL Database
-
-#### Step 1 : Open the command line on your device.
+### Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
 For Linux : Press Ctrl + Alt + T <br>
@@ -81,14 +79,62 @@ You need to install the mysql-connector library if you haven't already. You can 
 pip install mysql-connector-python
 ``` -->
 
-#### Step 2: Run the command on your device.
+### Step 2: Run the command on your device for your particular database type.
+
+#### 1. MySQL Database
+
 You'll need to run the following command on your command line.
 ```cmd
 mysqldump -u username -p --no-data database_name > schema.sql
 ```
+
+#### 2. SQLite Database
+You'll need to run the following command on your command line.
+
+```cmd
+sqlite3 database_name .schema > schema.sql
+```
+#### 3. PostgreSQL Database
+You'll need to run the following command on your command line.
+
+```cmd
+pg_dump -U username -d database_name -s -f schema.sql
+```
+
+
 Make sure to install any required tools or database clients on macOS, such as MySQL, PostgreSQL, SQLite, jq, and libxml2 (for xmllint), if they are not already installed. 
 
 This command will create a file called schema.sql that contains the schema (table structures, indexes, etc.) of the specified MySQL database.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ```python
 import mysql.connector
