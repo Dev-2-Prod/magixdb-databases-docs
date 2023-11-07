@@ -21,18 +21,18 @@ The functionality is provided for the given databases only.
 ```
 
 
-## 🏃‍♂️ Steps to extract Schema from different databases
+# 🏃‍♂️ Steps to extract Schema from different databases
 <h2 align = 'center';"> Using Command Line</h2>
 
-### Step 1 : Open the command line on your device.
+## Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
 For Linux : Press Ctrl + Alt + T <br>
 
 
-### Step 2: Run the command on your device for your particular database type.
+## Step 2: Run the command on your device for your particular database type.
 
-#### 1. MySQL Database
+### 1. MySQL Database
 
 To extract the schema of a MySQL database, you can use the mysqldump command with the --no-data option to generate a dump file containing only the database schema:
 ```bash
@@ -40,14 +40,14 @@ mysqldump -u username -p --no-data database_name > schema.sql
 ```
 Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
 
-#### 2. SQLite Database
+### 2. SQLite Database
 SQLite databases store their schema in a file, so you can directly copy it:
 ```bash
 sqlite3 database_name .schema > schema.sql
 ```
 This command creates a copy of the SQLite database file, which contains the schema information.
 
-#### 3. PostgreSQL Database
+### 3. PostgreSQL Database
 To extract the schema of a PostgreSQL database, you can use the pg_dump command with the --schema-only option:
 
 ```bash
@@ -59,7 +59,7 @@ Make sure to install any required tools or database clients on macOS, such as My
 
 This command will create a file called schema.sql that contains the schema (table structures, indexes, etc.) of the specified MySQL database.
 
-#### 4. Oracle Database
+### 4. Oracle Database
 To extract a schema from an Oracle database using shell commands, you can use the expdp (Data Pump Export) utility, which is provided by Oracle to export data and metadata from Oracle databases. Here's how you can use it to extract a schema:
 * Use the expdp command to export the schema to a dump file. Replace the placeholders with your specific values:
 
@@ -81,7 +81,7 @@ Here is an example command :
 expdp hr/mypassword@localhost:1521/orcl schemas=HR dumpfile=hr_schema.dmp directory=DATA_PUMP_DIR logfile=export_hr.log
 
 ```
-#### 5. MongoDB Database
+### 5. MongoDB Database
 Use the mongodump command to create a backup of your MongoDB database, specifying the --db option to target the specific database you want to extract the schema from:
 ```bash
 mongodump --host hostname --port port --db your_database_name --out backup_directory
@@ -91,14 +91,14 @@ mongodump --host hostname --port port --db your_database_name --out backup_direc
 your_database_name: The name of the MongoDB database you want to extract the schema from.
 * backup_directory: The directory where the backup files will be stored. A new directory with the same name as your database will be created in this location.
 
-#### 6. MariaDB Database
+### 6. MariaDB Database
 To extract the schema of a MySQL database, you can use the mysqldump command with the --no-data option to generate a dump file containing only the database schema:
 ```bash
 mysqldump -u username -p --no-data database_name > schema.sql
 ```
 Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
 
-#### 7. Microsoft SQL Server
+### 7. Microsoft SQL Server
 To extract a schema from a Microsoft SQL Server database using shell commands, you can use the sqlcmd utility along with the bcp (Bulk Copy Program) utility. Follow these steps to extract the schema:
 
 * Use the sqlcmd utility to generate SQL scripts for the schema. Replace the placeholders with your specific values:
@@ -111,7 +111,7 @@ sqlcmd -S server_name -d database_name -U username -P password -Q "EXEC sp_helpf
 * password: Your SQL Server password.
 * schema.sql: The output file where the schema information will be saved.
 
-#### 8. Redis
+### 8. Redis
 If you want to retrieve information about the keys and data types in your Redis database, you can use the SCAN command. You can interact with Redis using its command-line client, redis-cli.
 
 * Start the redis-cli tool to connect to your Redis server. Replace hostname and port with your Redis server's hostname and port (usually 6379):
@@ -130,7 +130,7 @@ This command will return a cursor and a list of keys. If the cursor is non-zero,
 TYPE your_key
 ```
 
-#### 9. Cassandra
+### 9. Cassandra
 Start the cqlsh tool to connect to your Cassandra cluster. Use the following command, replacing the placeholders with your specific values:
 ```bash
 cqlsh -u username -p password -k keyspace_name -h hostname -C port
@@ -147,7 +147,7 @@ DESCRIBE TABLE table_name; | tee output.txt
 ```
 This command will save the output of the DESCRIBE TABLE command to a file named output.txt in the current working directory.
 
-#### 10. CouchDB
+### 10. CouchDB
 Use the cURL command to make an HTTP GET request to CouchDB to retrieve a document. Replace the placeholders with your specific values:
 ```bash
 curl -X GET http://username:password@hostname:port/database_name/document_id
