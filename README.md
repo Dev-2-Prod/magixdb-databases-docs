@@ -69,7 +69,8 @@ python
   Using Command Line
 </h3>
 </p>
-### Step 1 : Open the command line on your device.
+
+### Step 1 : Open the command line on your device. <br>
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
 For Linux : Press Ctrl + Alt + T <br>
