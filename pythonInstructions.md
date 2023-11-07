@@ -180,3 +180,248 @@ To run a Python file from the shell (command prompt or terminal), you can use th
 python your_file_name.py
 ```
 You can also copy the script and run it on your IDE.
+
+### 4. Oracle Database
+
+#### Step 1: Install the cx_Oracle library
+```bash
+pip install cx_Oracle
+```
+
+#### Step 2 :Import libraries, connect and extract the schema.
+* You'll need to import the cx_Oracle library to work with Oracle databases.
+* To connect to an Oracle database, provide the necessary connection details, including the username, password, host, and SID (Service Identifier) or TNS (Transparent Network Substrate) entry.
+* A cursor is used to execute SQL queries and fetch results from the database.
+* You can use SQL queries to retrieve schema information from the Oracle database.
+* Remember to close the cursor and the database connection when you're done to release resources
+
+```python
+import cx_Oracle
+# Replace these values with your Oracle database connection details
+username = "your_username"
+password = "your_password"
+dsn = "your_dsn"
+
+# Create a connection to the Oracle database
+connection = cx_Oracle.connect(username, password, dsn)
+
+cursor = connection.cursor()
+
+# Get the list of tables in the schema
+cursor.execute("SELECT table_name FROM user_tables")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+connection.close()
+```
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 5. PostgreSQL Database
+
+#### Step 1: Install the psycopg2 library 
+```bash
+pip install psycopg2
+```
+
+#### Step 2 :Import libraries, connect and extract the schema.
+* You'll need to import the psycopg2 library to work with PostgreSQL databases.
+* To connect to a PostgreSQL database, provide the necessary connection details, including the host, database name, username, and password.
+* A cursor is used to execute SQL queries and fetch results from the database.
+* You can use SQL queries to retrieve schema information from the PostgreSQL database.
+* Make sure to close the cursor and the database connection when you're done with them
+
+```bash
+import psycopg2
+
+# Replace these values with your PostgreSQL database connection details
+host = "your_host"
+database = "your_database"
+user = "your_username"
+password = "your_password"
+
+# Create a connection to the PostgreSQL database
+connection = psycopg2.connect(
+    host=host,
+    database=database,
+    user=user,
+    password=password
+)
+
+cursor = connection.cursor()
+
+# Get the list of tables in the public schema
+cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+connection.close()
+```
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 6. MariaDB Database
+#### Step 1 : Install the MySQL Connector
+You need to install the mysql-connector library if you haven't already. You can do this using pip:
+```bash
+pip install mysql-connector-python
+
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the mysql.connector library to connect to the MySQL database.
+* You should establish a connection to your MySQL database by providing the necessary connection details, such as the host, username, password, and database name.
+* A cursor is used to execute SQL queries and fetch results from the database. 
+*To extract the schema from the database, you can use SQL queries to retrieve information about tables, columns, and other database objects. 
+*Make sure to close the cursor and the database connection when you're done with them to release resources.
+
+```python
+import mysql.connector
+# Replace these values with your database connection details
+host = "your_host"
+user = "your_username"
+password = "your_password"
+database = "your_database_name"
+
+# Create a connection to the MySQL database
+connection = mysql.connector.connect(
+    host=host,
+    user=user,
+    password=password,
+    database=database
+)
+
+cursor = connection.cursor()
+# Get the list of tables in the database
+cursor.execute("SHOW TABLES")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+connection.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 7. Microsoft SQL Server Database
+#### Step 1 : Install the pyodbc library
+```bash
+pip install pyodbc
+
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the pyodbc library to work with Microsoft SQL Server databases.
+* To connect to a Microsoft SQL Server database, provide the necessary connection details, such as the server name, database name, username, and password.
+* A cursor is used to execute SQL queries and fetch results from the database.
+* You can use SQL queries to retrieve schema information from the SQL Server database.
+* Make sure to close the cursor and the database connection when you're done with them
+
+```python
+import pyodbc
+
+# Replace these values with your SQL Server database connection details
+server = "your_server_name"
+database = "your_database_name"
+username = "your_username"
+password = "your_password"
+
+# Create a connection to the SQL Server database
+connection = pyodbc.connect(
+    f"DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}"
+)
+
+cursor = connection.cursor()
+
+# Get the list of tables in the database
+cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE'")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+connection.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 8. Redis Database
+#### Step 1 : Install the redis-py library
+```bash
+pip install redis
+
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the redis library to work with Redis
+* To connect to a Redis server, you typically provide the host and port where Redis is running
+* In Redis, you can use the KEYS command to list all keys matching a pattern. Here's how you can use the keys method from redis-py to retrieve all keys. Please note that the KEYS command can be resource-intensive and should be used with caution in a production environment.
+* You can close the connection when you're done
+
+
+```python
+import redis
+
+# Replace these values with your Redis server connection details
+host = "your_redis_host"
+port = 6379  # Default Redis port
+
+# Create a connection to the Redis server
+redis_client = redis.Redis(host=host, port=port, db=0)
+
+# Retrieve all keys in the Redis database
+keys = redis_client.keys("*")
+
+# Print the list of keys
+for key in keys:
+    print(key.decode("utf-8"))
+
+redis_client.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
