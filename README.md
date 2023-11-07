@@ -197,6 +197,17 @@ DESCRIBE TABLE table_name; | tee output.txt
 ```
 This command will save the output of the DESCRIBE TABLE command to a file named output.txt in the current working directory.
 
+#### 10. CouchDB
+Use the cURL command to make an HTTP GET request to CouchDB to retrieve a document. Replace the placeholders with your specific values:
+```bash
+curl -X GET http://username:password@hostname:port/database_name/document_id
+```
+* username: Your CouchDB username with appropriate privileges.
+* password: Your CouchDB password.
+* hostname: The hostname or IP address where your CouchDB server is running.
+* port: The port on which CouchDB is listening (default is 5984).
+* database_name: The name of the CouchDB database you want to inspect.
+* document_id: The unique identifier of the document you want to inspect.
 
 
 
