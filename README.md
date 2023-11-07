@@ -111,7 +111,6 @@ This command will create a file called schema.sql that contains the schema (tabl
 
 #### 4. Oracle Database
 To extract a schema from an Oracle database using shell commands, you can use the expdp (Data Pump Export) utility, which is provided by Oracle to export data and metadata from Oracle databases. Here's how you can use it to extract a schema:
-* Open a terminal or command prompt on the server where Oracle Database is installed.
 * Use the expdp command to export the schema to a dump file. Replace the placeholders with your specific values:
 
 ```bash
@@ -149,9 +148,54 @@ mysqldump -u username -p --no-data database_name > schema.sql
 ```
 Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
 
+#### 7. Microsoft SQL Server
+To extract a schema from a Microsoft SQL Server database using shell commands, you can use the sqlcmd utility along with the bcp (Bulk Copy Program) utility. Follow these steps to extract the schema:
 
+* Use the sqlcmd utility to generate SQL scripts for the schema. Replace the placeholders with your specific values:
+```bash
+sqlcmd -S server_name -d database_name -U username -P password -Q "EXEC sp_helpfile" -o schema.sql
+```
+* server_name: The name or IP address of your SQL Server.
+* database_name: The name of the SQL Server database from which you want to extract the schema.
+* username: Your SQL Server username with appropriate privileges.
+* password: Your SQL Server password.
+* schema.sql: The output file where the schema information will be saved.
 
+#### 8. Redis
+If you want to retrieve information about the keys and data types in your Redis database, you can use the SCAN command. You can interact with Redis using its command-line client, redis-cli.
 
+* Start the redis-cli tool to connect to your Redis server. Replace hostname and port with your Redis server's hostname and port (usually 6379):
+```bash
+redis-cli -h hostname -p port
+```
+
+* To list all keys in the Redis database, you can use the SCAN command as follows: 
+```bash
+SCAN 0
+```
+This command will return a cursor and a list of keys. If the cursor is non-zero, you should run the SCAN command again with the new cursor to retrieve the next batch of keys until the cursor becomes 0.
+
+* To get the data type of a specific key, you can use the TYPE command. Replace your_key with the key you want to inspect:
+```bash
+TYPE your_key
+```
+
+#### 9. Cassandra
+Start the cqlsh tool to connect to your Cassandra cluster. Use the following command, replacing the placeholders with your specific values:
+```bash
+cqlsh -u username -p password -k keyspace_name -h hostname -C port
+```
+* username: Your Cassandra username with appropriate privileges.
+* password: Your Cassandra password.
+* keyspace_name: The name of the Cassandra keyspace containing the table you want to inspect.
+* hostname: The hostname or IP address of your Cassandra cluster node.
+* port: The CQL native transport port (default is 9042).
+
+Once you are in the cqlsh shell, use the DESCRIBE TABLE command to inspect the table, and simultaneously save the output to a file using the tee command:
+```bash
+DESCRIBE TABLE table_name; | tee output.txt
+```
+This command will save the output of the DESCRIBE TABLE command to a file named output.txt in the current working directory.
 
 
 
