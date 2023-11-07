@@ -64,7 +64,7 @@ python
  -->
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
-
+<h1 style = "display:flex; justify-content : center;"> Using Command Line</h1>
 ### Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
@@ -95,6 +95,18 @@ You'll need to run the following command on your command line.
 sqlite3 database_name .schema > schema.sql
 ```
 #### 3. PostgreSQL Database
+You'll need to run the following command on your command line.
+
+```cmd
+pg_dump -U username -d database_name -s -f schema.sql
+```
+#### 4. PostgreSQL Database
+You'll need to run the following command on your command line.
+
+```cmd
+pg_dump -U username -d database_name -s -f schema.sql
+```
+#### 5. PostgreSQL Database
 You'll need to run the following command on your command line.
 
 ```cmd
