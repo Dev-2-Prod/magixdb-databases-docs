@@ -41,24 +41,24 @@ Check for the python version using :
 ```cmd
 python 
 ```
-
+## Steps to extract the schema for databases
+### 1. MySQL Database
 #### Step 1 : Install the MySQL Connector
 You need to install the mysql-connector library if you haven't already. You can do this using pip:
-```cmd
+```bash
 pip install mysql-connector-python
+
 ```
 
 #### Step 2: Import the necessary libraries
-You'll need to import the mysql.connector library to connect to the MySQL database.
+* You'll need to import the mysql.connector library to connect to the MySQL database.
+* You should establish a connection to your MySQL database by providing the necessary connection details, such as the host, username, password, and database name.
+* A cursor is used to execute SQL queries and fetch results from the database. 
+*To extract the schema from the database, you can use SQL queries to retrieve information about tables, columns, and other database objects. 
+*Make sure to close the cursor and the database connection when you're done with them to release resources.
 
 ```python
 import mysql.connector
-``` -->
-
-<!-- #### Step 3: Create a MySQL connection
-You should establish a connection to your MySQL database by providing the necessary connection details, such as the host, username, password, and database name.
-
-```python
 # Replace these values with your database connection details
 host = "your_host"
 user = "your_username"
@@ -73,18 +73,7 @@ connection = mysql.connector.connect(
     database=database
 )
 
-```
-#### Step 4: Create a cursor object
-A cursor is used to execute SQL queries and fetch results from the database. You can create a cursor like this:
-
-```python
 cursor = connection.cursor()
-```
-
-#### Step 5: Extract schema information
-To extract the schema from the database, you can use SQL queries to retrieve information about tables, columns, and other database objects. Here's an example of how to retrieve a list of tables in the database:
-
-```python
 # Get the list of tables in the database
 cursor.execute("SHOW TABLES")
 
@@ -94,14 +83,17 @@ tables = cursor.fetchall()
 # Print the list of tables
 for table in tables:
     print(table[0])
-```
-#### Step 6: Close the cursor and connection
-Make sure to close the cursor and the database connection when you're done with them to release resources.
 
-```python
 cursor.close()
 connection.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```python
+python your_file_name.py
 ```
+You can also copy the script and run it on your IDE.
 
 ### 2. SQLite
 
