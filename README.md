@@ -68,9 +68,9 @@ python
 ### 1. MySQL Database
 
 #### Step 1 : Open the command line on your device.
-For windows : Start -> Run -> Search cmd
-For macOS : Press Command + Space -> Type Terminal and Search
-For Linux : Press Ctrl + Alt + T
+For windows : Start -> Run -> Search cmd <br>
+For macOS : Press Command + Space -> Type Terminal and Search <br>
+For Linux : Press Ctrl + Alt + T <br>
 
 <!-- ```cmd
 pip install mysql-connector-python
