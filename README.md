@@ -1,4 +1,4 @@
-
+sql workbench, mongoDB command prompt, server->bin -> sql sh login -> keyspaces -> command
 # Database Types
 The functionality is provided for the given databases only.
 
@@ -19,7 +19,7 @@ The functionality is provided for the given databases only.
    └── Firebase Realtime Database
 
 ```
-# 🚀 Installation
+<!-- # 🚀 Installation
 
 ## Install latest version of Python3
 
@@ -61,16 +61,37 @@ Check for the python version using :
 ```cmd
 python 
 ```
-
+ -->
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
 
 ### 1. MySQL Database
 
+#### Step 1 : Open the command line on your device.
+For windows : Start -> Run -> Search cmd
+For macOS : Press Command + Space -> Type Terminal and Search
+For Linux : Press Ctrl + Alt + T
+
+<!-- ```cmd
+pip install mysql-connector-python
+```
 #### Step 1 : Install the MySQL Connector
 You need to install the mysql-connector library if you haven't already. You can do this using pip:
 ```cmd
 pip install mysql-connector-python
+``` -->
+
+#### Step 2: Run the command on your device.
+You'll need to run the following command on your command line.
+```cmd
+mysqldump -u username -p --no-data database_name > schema.sql
+```
+Make sure to install any required tools or database clients on macOS, such as MySQL, PostgreSQL, SQLite, jq, and libxml2 (for xmllint), if they are not already installed. 
+
+This command will create a file called schema.sql that contains the schema (table structures, indexes, etc.) of the specified MySQL database.
+
+<!-- ```python
+import mysql.connector
 ```
 
 #### Step 2: Import the necessary libraries
@@ -78,9 +99,9 @@ You'll need to import the mysql.connector library to connect to the MySQL databa
 
 ```python
 import mysql.connector
-```
+``` -->
 
-#### Step 3: Create a MySQL connection
+<!-- #### Step 3: Create a MySQL connection
 You should establish a connection to your MySQL database by providing the necessary connection details, such as the host, username, password, and database name.
 
 ```python
@@ -232,4 +253,4 @@ Close the MongoDB connection when you're done with it to release resources.
 
 ```python
 client.close()
-```
+``` -->
