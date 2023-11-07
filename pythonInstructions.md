@@ -425,3 +425,94 @@ python your_file_name.py
 ```
 You can also copy the script and run it on your IDE.
 
+### 9. Cassandra Database
+#### Step 1 : Install the cassandra-driver library
+```bash
+pip install cassandra-driver
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the cassandra library to work with Cassandra:
+* To connect to a Cassandra cluster, provide the necessary connection details, including the contact points (hostnames or IP addresses) of the cluster nodes.
+* A session is used to execute CQL (Cassandra Query Language) statements.
+* In Cassandra, schema information is typically related to keyspaces and column families (similar to tables in relational databases). You can list keyspaces and column families using CQL queries. 
+* Don't forget to close the session and cluster when you're done with them
+
+
+```python
+from cassandra.cluster import Cluster
+
+# Replace these values with your Cassandra cluster connection details
+contact_points = ['node1', 'node2', 'node3']  # List of Cassandra cluster nodes
+
+# Create a connection to the Cassandra cluster
+cluster = Cluster(contact_points=contact_points)
+
+session = cluster.connect()
+
+# Get the list of keyspaces in the Cassandra cluster
+keyspaces = session.execute("SELECT keyspace_name FROM system_schema.keyspaces")
+
+# Print the list of keyspaces
+for keyspace in keyspaces:
+    print(keyspace.keyspace_name)
+
+session.shutdown()
+cluster.shutdown()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 10. CouchDB Database
+#### Step 1 : Install the couchdb library
+```bash
+pip install couchdb
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the couchdb library to work with CouchDB
+* To connect to a CouchDB server, provide the server URL.
+* In CouchDB, data is organized into databases, similar to collections in other NoSQL databases. 
+* Documents in CouchDB are stored in databases. You need to list them.
+* You can close the connection when you're done
+
+
+```python
+import couchdb
+
+# Replace this URL with your CouchDB server URL
+server_url = "http://localhost:5984"
+
+# Create a connection to the CouchDB server
+server = couchdb.Server(server_url)
+
+# List all existing databases on the CouchDB server
+databases = server.list()
+for database in databases:
+    print(database)
+
+# Replace 'your_database_name' with the name of the CouchDB database you want to inspect
+database_name = 'your_database_name'
+db = server[database_name]
+
+# List all documents in the specified database
+for doc_id in db:
+    print(doc_id)
+
+server.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+
+
