@@ -64,7 +64,8 @@ python
  -->
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
-<h1 align = 'center';"> Using Command Line</h1>
+<h2 align = 'center';"> Using Command Line</h2>
+
 ### Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
@@ -84,14 +85,14 @@ pip install mysql-connector-python
 #### 1. MySQL Database
 
 To extract the schema of a MySQL database, you can use the mysqldump command with the --no-data option to generate a dump file containing only the database schema:
-```cmd
+```bash
 mysqldump -u username -p --no-data database_name > schema.sql
 ```
 Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
 
 #### 2. SQLite Database
 SQLite databases store their schema in a file, so you can directly copy it:
-```cmd
+```bash
 sqlite3 database_name .schema > schema.sql
 ```
 This command creates a copy of the SQLite database file, which contains the schema information.
@@ -99,28 +100,56 @@ This command creates a copy of the SQLite database file, which contains the sche
 #### 3. PostgreSQL Database
 To extract the schema of a PostgreSQL database, you can use the pg_dump command with the --schema-only option:
 
-```cmd
+```bash
 pg_dump -U username -d database_name -s -f schema.sql
 ```
 Replace username with your PostgreSQL username, database_name with the name of the database, and specify the output file using the -f option.
 
-#### 4. PostgreSQL Database
-You'll need to run the following command on your command line.
-
-```cmd
-pg_dump -U username -d database_name -s -f schema.sql
-```
-#### 5. PostgreSQL Database
-You'll need to run the following command on your command line.
-
-```cmd
-pg_dump -U username -d database_name -s -f schema.sql
-```
-
-
 Make sure to install any required tools or database clients on macOS, such as MySQL, PostgreSQL, SQLite, jq, and libxml2 (for xmllint), if they are not already installed. 
 
 This command will create a file called schema.sql that contains the schema (table structures, indexes, etc.) of the specified MySQL database.
+
+#### 4. Oracle Database
+To extract a schema from an Oracle database using shell commands, you can use the expdp (Data Pump Export) utility, which is provided by Oracle to export data and metadata from Oracle databases. Here's how you can use it to extract a schema:
+* Open a terminal or command prompt on the server where Oracle Database is installed.
+* Use the expdp command to export the schema to a dump file. Replace the placeholders with your specific values:
+
+```bash
+expdp username/password@hostname:port/service_name schemas=schema_name dumpfile=schema_dump.dmp directory=directory_name logfile=export_log.log
+```
+* username: Your Oracle username with the necessary privileges.
+* password: Your Oracle password.
+* hostname: The hostname or IP address of the Oracle database server.
+* port: The port on which the Oracle listener is running (typically 1521).
+* service_name: The Oracle service name or SID.
+* schema_name: The name of the schema you want to extract.
+* schema_dump.dmp: The name of the dump file where the schema will be exported.
+* directory_name: The name of the Oracle directory where the dump file will be stored. You can create an Oracle directory using SQL commands.
+* export_log.log: The name of the log file to record the export process.
+
+Here is an example command : 
+```bash
+expdp hr/mypassword@localhost:1521/orcl schemas=HR dumpfile=hr_schema.dmp directory=DATA_PUMP_DIR logfile=export_hr.log
+
+```
+#### 5. MongoDB Database
+Use the mongodump command to create a backup of your MongoDB database, specifying the --db option to target the specific database you want to extract the schema from:
+```bash
+mongodump --host hostname --port port --db your_database_name --out backup_directory
+```
+* hostname: The hostname or IP address where your MongoDB server is running.
+* port: The port on which MongoDB is listening (default is 27017).
+your_database_name: The name of the MongoDB database you want to extract the schema from.
+* backup_directory: The directory where the backup files will be stored. A new directory with the same name as your database will be created in this location.
+
+#### 6. MariaDB Database
+To extract the schema of a MySQL database, you can use the mysqldump command with the --no-data option to generate a dump file containing only the database schema:
+```bash
+mysqldump -u username -p --no-data database_name > schema.sql
+```
+Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
+
+
 
 
 
