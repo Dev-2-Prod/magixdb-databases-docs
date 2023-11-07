@@ -64,7 +64,11 @@ python
  -->
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
-<h1 style = "display:flex; justify-content : center;"> Using Command Line</h1>
+<p align="center">
+<h3>
+  Using Command Line
+</h3>
+</p>
 ### Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
@@ -83,23 +87,27 @@ pip install mysql-connector-python
 
 #### 1. MySQL Database
 
-You'll need to run the following command on your command line.
+To extract the schema of a MySQL database, you can use the mysqldump command with the --no-data option to generate a dump file containing only the database schema:
 ```cmd
 mysqldump -u username -p --no-data database_name > schema.sql
 ```
+Replace username with your MySQL username, database_name with the name of the database, and provide the password when prompted. The schema will be saved in the schema.sql file.
 
 #### 2. SQLite Database
-You'll need to run the following command on your command line.
-
+SQLite databases store their schema in a file, so you can directly copy it:
 ```cmd
 sqlite3 database_name .schema > schema.sql
 ```
+This command creates a copy of the SQLite database file, which contains the schema information.
+
 #### 3. PostgreSQL Database
-You'll need to run the following command on your command line.
+To extract the schema of a PostgreSQL database, you can use the pg_dump command with the --schema-only option:
 
 ```cmd
 pg_dump -U username -d database_name -s -f schema.sql
 ```
+Replace username with your PostgreSQL username, database_name with the name of the database, and specify the output file using the -f option.
+
 #### 4. PostgreSQL Database
 You'll need to run the following command on your command line.
 
