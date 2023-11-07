@@ -64,13 +64,8 @@ python
  -->
 
 ## 🏃‍♂️ Steps to extract Schema from different databases
-<p align="center">
-<h3>
-  Using Command Line
-</h3>
-</p>
-
-### Step 1 : Open the command line on your device. <br>
+<h1 align = 'center';"> Using Command Line</h1>
+### Step 1 : Open the command line on your device.
 For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
 For Linux : Press Ctrl + Alt + T <br>
