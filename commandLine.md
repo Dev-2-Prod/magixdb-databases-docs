@@ -29,14 +29,6 @@ For windows : Start -> Run -> Search cmd <br>
 For macOS : Press Command + Space -> Type Terminal and Search <br>
 For Linux : Press Ctrl + Alt + T <br>
 
-<!-- ```cmd
-pip install mysql-connector-python
-```
-#### Step 1 : Install the MySQL Connector
-You need to install the mysql-connector library if you haven't already. You can do this using pip:
-```cmd
-pip install mysql-connector-python
-``` -->
 
 ### Step 2: Run the command on your device for your particular database type.
 
