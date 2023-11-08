@@ -1,4 +1,4 @@
-sql workbench, mongoDB command prompt, server->bin -> sql sh login -> keyspaces -> command
+
 # Database Types
 The functionality is provided for the given databases only.
 
