@@ -514,5 +514,254 @@ python your_file_name.py
 ```
 You can also copy the script and run it on your IDE.
 
+### 11. Teradata
+#### Step 1 : Install the teradataml library
+```bash
+pip install teradataml
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the Teradata Python Module and other required libraries.
+* To connect to a Teradata database, you'll need to provide the necessary connection details, such as the host, username, and password.
+* With the Teradata connection established, you can execute SQL queries to extract schema information. 
+
+```python
+import teradataml
+from teradataml import create_context
+from teradataml.dataframe.sql_ops import show
+
+# Replace these values with your Teradata database connection details
+host = "your_teradata_host"
+username = "your_username"
+password = "your_password"
+
+# Create a Teradata connection
+with create_context(host=host, username=username, password=password) as context:
+    # Use the context to execute SQL queries
+    # For example, you can list tables in a database
+    query = "SHOW TABLES;"
+    show(query)
+
+query = "SHOW TABLES;"
+show(query)
+
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 12. Snowflake 
+#### Step 1 : Install the snowflake-connector-python library
+```bash
+pip install snowflake-connector-python
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the snowflake.connector library to work with Snowflake
+* To connect to Snowflake, provide the necessary connection details, such as the account URL, username, password, and warehouse.
+* A cursor is used to execute SQL queries and fetch results from the Snowflake database.
+* You can use SQL queries to retrieve schema information from Snowflake.
+* Make sure to close the cursor and the database connection when you're done with them.
+
+```python
+import snowflake.connector
+
+# Replace these values with your Snowflake connection details
+account_url = "your_account_url"
+username = "your_username"
+password = "your_password"
+warehouse = "your_warehouse"
+
+# Create a Snowflake connection
+connection = snowflake.connector.connect(
+    user=username,
+    password=password,
+    account=account_url,
+    warehouse=warehouse
+)
+
+cursor = connection.cursor()
+
+# Replace 'your_database' and 'your_schema' with the database and schema you want to inspect
+database = 'your_database'
+schema = 'your_schema'
+
+# Get the list of tables in the specified schema
+query = f"SHOW TABLES IN {database}.{schema};"
+cursor.execute(query)
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[1])
+
+cursor.close()
+connection.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+
+### 13. CockroachDB 
+#### Step 1 : Install the psycopg2 library
+Connecting to CockroachDB, a distributed SQL database, and extracting schema information can be done using Python and the psycopg2 library, which is commonly used to connect to PostgreSQL databases and is also compatible with CockroachDB.
+```bash
+pip install psycopg2
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the psycopg2 library to work with CockroachDB
+* To connect to a CockroachDB cluster, provide the necessary connection details, such as the host, database name, username, and password
+* A cursor is used to execute SQL queries and fetch results from the CockroachDB cluster. 
+* You can use SQL queries to retrieve schema information from the CockroachDB cluster.
+* Make sure to close the cursor and the database connection when you're done with them.
+
+```python
+import psycopg2
+
+# Replace these values with your CockroachDB connection details
+host = "your_host"
+database = "your_database"
+user = "your_username"
+password = "your_password"
+
+# Create a connection to the CockroachDB cluster
+connection = psycopg2.connect(
+    host=host,
+    database=database,
+    user=user,
+    password=password
+)
+
+cursor = connection.cursor()
+
+# Get the list of tables in the current database
+cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+
+# Fetch all table names
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+connection.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 14. ElasticDB 
+#### Step 1 : Install the elasticsearch library
+```bash
+pip install elasticsearch
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the elasticsearch library to work with Elasticsearch
+* To connect to an Elasticsearch cluster, provide the necessary connection details, such as the host and port.
+* Elasticsearch is schema-less, which means it doesn't have a traditional schema like relational databases. Instead, it stores JSON documents and indexes them for searching. You can retrieve data or index information using queries. 
+
+
+```python
+from elasticsearch import Elasticsearch
+
+# Replace these values with your Elasticsearch cluster connection details
+host = "your_host"
+port = 9200  # Default Elasticsearch port
+
+# Create a connection to the Elasticsearch cluster
+es = Elasticsearch([{'host': host, 'port': port}])
+
+# List all indices in the Elasticsearch cluster
+indices = es.indices.get_alias("*")
+
+# Print the list of indices
+for index in indices:
+    print(index)
+
+
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+### 15. Doris
+#### Step 1 : Install the pydoris library
+```bash
+pip install pydoris
+```
+
+#### Step 2: Import, Connect and Extract the schema step-wise.
+* You'll need to import the pydoris library to work with Doris
+* To connect to a Doris database, provide the necessary connection details, such as the host, port, database name, username, and password.
+* You can use SQL queries to retrieve schema information from the Doris database. For example, to list all tables in the database.
+* Make sure to close the cursor and the database connection when you're done with them.
+
+
+```python
+import pydoris
+
+# Replace these values with your Doris database connection details
+host = "your_doris_host"
+port = 9030  # Default Doris port
+database = "your_database"
+user = "your_username"
+password = "your_password"
+
+# Create a connection to the Doris database
+with pydoris.connect(host=host, port=port, database=database, user=user, password=password) as conn:
+    # Create a cursor for executing SQL queries
+    cursor = conn.cursor()
+    
+    # Use the cursor to execute SQL queries
+    # For example, you can list tables in the database
+    query = "SHOW TABLES;"
+    cursor.execute(query)
+    
+    # Fetch and print the list of tables
+    tables = cursor.fetchall()
+    for table in tables:
+        print(table)
+
+# Get the list of tables in the database
+cursor.execute("SHOW TABLES;")
+tables = cursor.fetchall()
+
+# Print the list of tables
+for table in tables:
+    print(table[0])
+
+cursor.close()
+``` 
+
+#### Step 3: Run this file on your device.
+To run a Python file from the shell (command prompt or terminal), you can use the python command followed by the name of the Python script you want to execute. Here's the basic syntax: 
+```bash
+python your_file_name.py
+```
+You can also copy the script and run it on your IDE.
+
+
 
 
