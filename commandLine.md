@@ -166,17 +166,16 @@ bteq < your_bteq_script_file
  ```
 * your_bteq_script_file: Create a BTEQ script file with the SQL queries to extract schema information. You will run this script using the bteq command.
 
-The output from the BTEQ script will be displayed in your terminal. You can redirect this output to a file if needed by using standard shell output redirection.
-```bash
-bteq < your_bteq_script_file > schema_output.txt
-```
-
 In your BTEQ script file, write SQL queries to retrieve schema information. To retrieve schema informatiion you can use :
 ```bash
 SELECT ColumnName, ColumnType
 FROM DBC.ColumnsV
 WHERE DatabaseName = 'your_database_name'
   AND TableName = 'your_table_name';
+```
+The output from the BTEQ script will be displayed in your terminal. You can redirect this output to a file if needed by using standard shell output redirection.
+```bash
+bteq < your_bteq_script_file > schema_output.txt
 ```
 
 ### 12. Snowflake 
@@ -186,14 +185,13 @@ snowsql -c your_snowflake_connection_profile
 ```
 * your_snowflake_connection_profile: This should be a Snowflake connection profile that contains the connection details, including account URL, username, and password. You can create a Snowflake connection profile using the SnowSQL client or configure it using the Snowflake web interface.
 
-To save the output to a file, you can use standard shell output redirection. 
-```bash
-snowsql -c your_snowflake_connection_profile -f your_sql_script.sql > schema_output.txt
-```
-
 In your SQL client, write SQL queries to retrieve schema information. 
 ```bash
 SHOW COLUMNS IN DATABASE_NAME.SCHEMA_NAME.TABLE_NAME;
+```
+To save the output to a file, you can use standard shell output redirection. 
+```bash
+snowsql -c your_snowflake_connection_profile -f your_sql_script.sql > schema_output.txt
 ```
 ### 13. CockroachDB
 Use the cockroach sql command to connect to your CockroachDB cluster. Replace the placeholders with your specific values.
@@ -205,15 +203,17 @@ cockroach sql --insecure --host=hostname --port=port --database=your_database_na
 * port: The port on which CockroachDB is listening (default is 26257).
 * your_database_name: The name of the CockroachDB database you want to inspect.
 
-To save the output to a file, you can use standard shell output redirection.
-```bash
-cockroach sql --insecure --host=hostname --port=port --database=your_database_name < your_sql_script.sql > schema_output.txt
-```
+
 In the CockroachDB SQL shell, write SQL queries to retrieve schema information. 
 ```bash
 SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = 'your_table_name';
+```
+
+To save the output to a file, you can use standard shell output redirection.
+```bash
+cockroach sql --insecure --host=hostname --port=port --database=your_database_name < your_sql_script.sql > schema_output.txt
 ```
 ### 14. ElasticDB
 If you are looking to extract schema information from Elasticsearch, it's important to note that Elasticsearch follows a schema-less data model. It doesn't enforce a predefined schema for documents within an index. Instead, it dynamically indexes and stores JSON documents. 
