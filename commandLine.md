@@ -159,30 +159,78 @@ curl -X GET http://username:password@hostname:port/database_name/document_id
 * database_name: The name of the CouchDB database you want to inspect.
 * document_id: The unique identifier of the document you want to inspect.
 
+### 11. Teradata
+ You can use the BTEQ (Basic Teradata Query) command-line utility or another SQL client to execute these queries.
+ ```bash
+bteq < your_bteq_script_file
+ ```
+* your_bteq_script_file: Create a BTEQ script file with the SQL queries to extract schema information. You will run this script using the bteq command.
 
+The output from the BTEQ script will be displayed in your terminal. You can redirect this output to a file if needed by using standard shell output redirection.
+```bash
+bteq < your_bteq_script_file > schema_output.txt
+```
 
+In your BTEQ script file, write SQL queries to retrieve schema information. To retrieve schema informatiion you can use :
+```bash
+SELECT ColumnName, ColumnType
+FROM DBC.ColumnsV
+WHERE DatabaseName = 'your_database_name'
+  AND TableName = 'your_table_name';
+```
 
+### 12. Snowflake 
+To extract schema information from Snowflake, you can use SQL queries to retrieve metadata about tables, columns, and other database objects. You can use the SnowSQL command-line client or another SQL client to execute these queries.
+```bash
+snowsql -c your_snowflake_connection_profile
+```
+* your_snowflake_connection_profile: This should be a Snowflake connection profile that contains the connection details, including account URL, username, and password. You can create a Snowflake connection profile using the SnowSQL client or configure it using the Snowflake web interface.
 
+To save the output to a file, you can use standard shell output redirection. 
+```bash
+snowsql -c your_snowflake_connection_profile -f your_sql_script.sql > schema_output.txt
+```
 
+In your SQL client, write SQL queries to retrieve schema information. 
+```bash
+SHOW COLUMNS IN DATABASE_NAME.SCHEMA_NAME.TABLE_NAME;
+```
+### 13. CockroachDB
+Use the cockroach sql command to connect to your CockroachDB cluster. Replace the placeholders with your specific values.
 
+```bash
+cockroach sql --insecure --host=hostname --port=port --database=your_database_name
+```
+* hostname: The hostname or IP address where your CockroachDB server is running.
+* port: The port on which CockroachDB is listening (default is 26257).
+* your_database_name: The name of the CockroachDB database you want to inspect.
 
+To save the output to a file, you can use standard shell output redirection.
+```bash
+cockroach sql --insecure --host=hostname --port=port --database=your_database_name < your_sql_script.sql > schema_output.txt
+```
+In the CockroachDB SQL shell, write SQL queries to retrieve schema information. 
+```bash
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'your_table_name';
+```
+### 14. ElasticDB
+If you are looking to extract schema information from Elasticsearch, it's important to note that Elasticsearch follows a schema-less data model. It doesn't enforce a predefined schema for documents within an index. Instead, it dynamically indexes and stores JSON documents. 
+However, you can explore the schema (field mappings) of your Elasticsearch indices using the Elasticsearch REST API. You can use tools like curl to make HTTP requests to the Elasticsearch cluster. 
 
+* Use curl to make an HTTP GET request to retrieve mapping information for an Elasticsearch index. Replace the placeholders with your specific values.
+```bash
+curl -X GET "http://elasticsearch_host:elasticsearch_port/index_name/_mapping"
+```
+* elasticsearch_host: The hostname or IP address where your Elasticsearch cluster is running.
+* elasticsearch_port: The port on which Elasticsearch is listening (default is 9200).
+* index_name: The name of the Elasticsearch index for which you want to inspect the mapping.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 15. Doris
+Use the doris-client command to connect to your Doris cluster. Replace the placeholders with your specific values.
+```bash
+doris-client -u username -p password -h hostname -P port -d your_database_name -e "SHOW COLUMNS FROM your_database_name.your_table_name;" > schema_output.txt
+```
+* Replace your_database_name with the name of your database.
+* Replace your_table_name with the name of the table for which you want to extract schema information.
