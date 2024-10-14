@@ -71,6 +71,31 @@ This class handles connections to a SQLite database.
 
 - `db_file`: The path to the SQLite database file (default: `"sqlite_3_chinook.db"`).
 
+### 7. `PostgreSQL` (in `postgresql.py`)
+
+This class handles connections to a PostgreSQL database.
+
+#### Input Parameters
+
+- `host`: The database server host.
+- `username`: The username for database authentication.
+- `password`: The password for database authentication.
+- `database`: The name of the database to connect to.
+- `port`: The port number for the database connection (default: `5432`).
+
+### 8. `MongoDBData` (in `mongodb.py`)
+
+This class handles connections to a MongoDB database.
+
+#### Input Parameters
+
+- `host`: The MongoDB server host.
+- `username`: The username for MongoDB authentication.
+- `password`: The password for MongoDB authentication.
+- `database`: The name of the MongoDB database to connect to.
+- `port`: The port number for the database connection (default: `27017`).
+
+
 ## Usage
 
 Each class provides methods to:
